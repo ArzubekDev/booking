@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import initialLeftSeats from "../seatfrontleft.json";
 import initialRightSeats from "../seatfrontright.json";
 import initialCenterSeats from "../seatscenter.json"
@@ -29,6 +29,25 @@ export const SeatProvider = ({ children }: { children: ReactNode }) => {
   const [right, setRight] = useState<SeatType[]>(initialRightSeats);
   const [center, setCenter] = useState<SeatType[]>(initialCenterSeats);
   const [back, setBack] = useState<SeatType[]>(initialBackSeats);
+
+  useEffect(() => {
+    const savedLeft = sessionStorage.getItem('selectedLeft');
+    const savedRight = sessionStorage.getItem('selectedRight');
+    const savedCenter = sessionStorage.getItem('selectedCenter');
+    const savedBack = sessionStorage.getItem('selectedBack');
+
+    if (savedLeft) setLeft(JSON.parse(savedLeft));
+    if (savedRight) setRight(JSON.parse(savedRight));
+    if (savedCenter) setCenter(JSON.parse(savedCenter));
+    if (savedBack) setBack(JSON.parse(savedBack));
+  }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem('selectedLeft', JSON.stringify(left));
+    sessionStorage.setItem('selectedRight', JSON.stringify(right));
+    sessionStorage.setItem('selectedCenter', JSON.stringify(center));
+    sessionStorage.setItem('selectedBack', JSON.stringify(back));
+  }, [left, right, center, back]);
 
   const toggleSeat = (id: number) => {
     setLeft((prev) =>

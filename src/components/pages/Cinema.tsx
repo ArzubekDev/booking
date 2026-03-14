@@ -7,7 +7,7 @@ const Cinema = () => {
 
   return (
     <section className={scss.cinema}>
-      <div className={scss.header}>
+      <article className={scss.header}>
         <button className={scss.backButton}>
           <MoveLeft/>
         </button>
@@ -15,7 +15,7 @@ const Cinema = () => {
         <button className={scss.calendarButton}>
           <CalendarDays />
         </button>
-      </div>
+      </article>
 <div className={scss.container}>
 <div className={scss.main}>
     <div className={scss.screen}/>

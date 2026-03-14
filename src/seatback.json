@@ -1,0 +1,22 @@
+[
+ { "id": 27, "row": 4, "number": 1, "status": "свободно", "price": 300 },
+  { "id": 28, "row": 4, "number": 2, "status": "свободно", "price": 300 },
+  { "id": 29, "row": 4, "number": 3, "status": "свободно", "price": 300 },
+  { "id": 30, "row": 4, "number": 4, "status": "свободно", "price": 300 },
+  { "id": 31, "row": 4, "number": 5, "status": "свободно", "price": 300 },
+  { "id": 32, "row": 4, "number": 6, "status": "свободно", "price": 300 },
+  { "id": 33, "row": 4, "number": 7, "status": "свободно", "price": 300 },
+  { "id": 34, "row": 4, "number": 8, "status": "свободно", "price": 300 },
+  { "id": 35, "row": 4, "number": 9, "status": "свободно", "price": 300 },
+  { "id": 36, "row": 4, "number": 10, "status": "свободно", "price": 300 },
+  { "id": 37, "row": 5, "number": 1, "status": "свободно", "price": 250 },
+  { "id": 38, "row": 5, "number": 2, "status": "свободно", "price": 250 },
+  { "id": 39, "row": 5, "number": 3, "status": "свободно", "price": 250 },
+  { "id": 40, "row": 5, "number": 4, "status": "свободно", "price": 250 },
+  { "id": 41, "row": 5, "number": 5, "status": "свободно", "price": 250 },
+  { "id": 42, "row": 5, "number": 6, "status": "свободно", "price": 250 },
+  { "id": 43, "row": 5, "number": 7, "status": "свободно", "price": 250 },
+  { "id": 44, "row": 5, "number": 8, "status": "свободно", "price": 250 },
+  { "id": 45, "row": 5, "number": 9, "status": "свободно", "price": 250 },
+  { "id": 46, "row": 5, "number": 10, "status": "свободно", "price": 250 }
+]

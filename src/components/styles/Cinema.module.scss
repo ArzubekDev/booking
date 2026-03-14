@@ -1,0 +1,121 @@
+.cinema {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #130a2b;
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    h1 {
+        color: #eebbde;
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+    .backButton, .calendarButton {
+        padding: 10px 20px;
+        background-color: #c7058a;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+        &:hover {
+            background-color: #a0046e;
+        }
+    }
+    .calendarButton {
+        visibility: hidden;
+    }
+}
+.container{
+    display: flex;
+    align-items: start;
+    .main {
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 70px;
+.screen {
+  position: relative;
+  width: 40%;
+  height: 8px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: linear-gradient(90deg,#ff00c8,#ff4ddb,#ff00c8);
+  box-shadow: 0 0 20px rgba(255,0,200,0.7);
+}
+.screen::after {
+  content: "";
+  position: absolute;
+  top: 100%;  
+  left: -50%;
+  width: 200%;
+  height: 200px;
+  background: radial-gradient(
+    ellipse at top,
+    rgba(255,0,200,0.35),
+    transparent 70%
+  );
+  filter: blur(30px);
+  animation: light 3s ease-in-out infinite;
+}
+
+@keyframes light {
+  0%,100% {
+    opacity: 0.4;
+    transform: scaleY(0.9);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scaleY(1.2);
+  }
+}
+
+.sections{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+
+  p{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: 17px;
+    .free {
+      width: 20px;
+      height: 20px;
+      background-color: #fff;
+      border-radius: 50%;
+    }
+    .taken {
+      width: 20px;
+      height: 20px;
+      background-color: #c7058a;
+      border-radius: 50%;
+    }
+    .selected {
+      width: 20px;
+      height: 20px;
+      background-color: rgb(7, 154, 142);
+      border-radius: 50%;
+    }
+  }
+}
+    }
+}
+
+}

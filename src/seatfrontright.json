@@ -1,0 +1,11 @@
+[
+  { "id": 10, "row": 2, "number": 6, "status": "свободно", "price": 350 },
+  { "id": 11, "row": 2, "number": 7, "status": "свободно", "price": 350 },
+  { "id": 12, "row": 2, "number": 8, "status": "свободно", "price": 350 },
+  { "id": 13, "row": 2, "number": 9, "status": "свободно", "price": 350 },
+  { "id": 14, "row": 2, "number": 10, "status": "свободно", "price": 350 },
+   { "id": 15, "row": 1, "number": 5, "status": "свободно", "price": 400 },
+  { "id": 16, "row": 1, "number": 6, "status": "свободно", "price": 400 },
+  { "id": 17, "row": 1, "number": 7, "status": "свободно", "price": 400 },
+  { "id": 18, "row": 1, "number": 8, "status": "свободно", "price": 400 }
+]

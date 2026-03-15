@@ -20,6 +20,7 @@ interface SeatContextType {
   back: SeatType[];
   toggleSeat: (id: number) => void;
   confirmBooking: () => void;
+  resetSelection: () => void;
 }
 
 const SeatContext = createContext<SeatContextType | undefined>(undefined);
@@ -31,88 +32,68 @@ export const SeatProvider = ({ children }: { children: ReactNode }) => {
   const [back, setBack] = useState<SeatType[]>(initialBackSeats);
 
   useEffect(() => {
-    const savedLeft = sessionStorage.getItem('selectedLeft');
-    const savedRight = sessionStorage.getItem('selectedRight');
-    const savedCenter = sessionStorage.getItem('selectedCenter');
-    const savedBack = sessionStorage.getItem('selectedBack');
-
-    if (savedLeft) setLeft(JSON.parse(savedLeft));
-    if (savedRight) setRight(JSON.parse(savedRight));
-    if (savedCenter) setCenter(JSON.parse(savedCenter));
-    if (savedBack) setBack(JSON.parse(savedBack));
+    const saved = sessionStorage.getItem('booked_seats');
+    if (saved) {
+      const { leftS, rightS, centerS, backS } = JSON.parse(saved);
+      setLeft(leftS);
+      setRight(rightS);
+      setCenter(centerS);
+      setBack(backS);
+    }
   }, []);
 
-  useEffect(() => {
-    sessionStorage.setItem('selectedLeft', JSON.stringify(left));
-    sessionStorage.setItem('selectedRight', JSON.stringify(right));
-    sessionStorage.setItem('selectedCenter', JSON.stringify(center));
-    sessionStorage.setItem('selectedBack', JSON.stringify(back));
-  }, [left, right, center, back]);
-
-  const toggleSeat = (id: number) => {
-    setLeft((prev) =>
-      prev.map((seat) => {
-        if (seat.id === id) {
-          if (seat.status === "свободно") return { ...seat, status: "выбрано" };
-          if (seat.status === "выбрано") return { ...seat, status: "свободно" };
-        }
-        return seat;
-      })
-    );
-    setRight((prev) =>
-      prev.map((seat) => {
-        if (seat.id === id) {
-          if (seat.status === "свободно") return { ...seat, status: "выбрано" };
-          if (seat.status === "выбрано") return { ...seat, status: "свободно" };
-        }
-        return seat;
-      })
-    );  
-    setCenter((prev) =>
-      prev.map((seat) => {
-        if (seat.id === id) {
-          if (seat.status === "свободно") return { ...seat, status: "выбрано" };
-          if (seat.status === "выбрано") return { ...seat, status: "свободно" };
-        }
-        return seat;
-      })
-    );  
-    setBack((prev) =>
-      prev.map((seat) => {
-        if (seat.id === id) {
-          if (seat.status === "свободно") return { ...seat, status: "выбрано" };
-          if (seat.status === "выбрано") return { ...seat, status: "свободно" };
-        }
-        return seat;
-      })
-    );
+  const saveToStorage = (l: SeatType[], r: SeatType[], c: SeatType[], b: SeatType[]) => {
+    sessionStorage.setItem('booked_seats', JSON.stringify({
+      leftS: l,
+      rightS: r,
+      centerS: c,
+      backS: b
+    }));
   };
 
-  const confirmBooking = () => {
-    setLeft((prev) =>
-      prev.map((seat) =>
-        seat.status === "выбрано" ? { ...seat, status: "занято" } : seat
-      )
-    );
-    setRight((prev) =>
-      prev.map((seat) =>
-        seat.status === "выбрано" ? { ...seat, status: "занято" } : seat
-      )
-    );
-    setCenter((prev) =>
-      prev.map((seat) =>
-        seat.status === "выбрано" ? { ...seat, status: "занято" } : seat
-      )
-    );
-    setBack((prev) =>
-      prev.map((seat) =>
-        seat.status === "выбрано" ? { ...seat, status: "занято" } : seat
-      )
-    );
+const toggleSeat = (id: number) => {
+    const update = (prev: SeatType[]) => prev.map((seat) => {
+      if (seat.id === id) {
+        if (seat.status === "свободно") return { ...seat, status: "выбрано" };
+        if (seat.status === "выбрано") return { ...seat, status: "свободно" };
+      }
+      return seat;
+    });
+
+    setLeft(prev => update(prev));
+    setRight(prev => update(prev));
+    setCenter(prev => update(prev));
+    setBack(prev => update(prev));
   };
+
+const confirmBooking = () => {
+    const markAsBusy = (prev: SeatType[]) => prev.map((seat) => 
+      seat.status === "выбрано" ? { ...seat, status: "занято" } : seat
+    );
+    const newLeft = markAsBusy(left);
+    const newRight = markAsBusy(right);
+    const newCenter = markAsBusy(center);
+    const newBack = markAsBusy(back);
+
+    setLeft(newLeft);
+    setRight(newRight);
+    setCenter(newCenter);
+    setBack(newBack);
+
+    saveToStorage(newLeft, newRight, newCenter, newBack);
+  };
+
+const resetSelection = () => {
+  setLeft(initialLeftSeats);
+  setRight(initialRightSeats);
+  setCenter(initialCenterSeats);
+  setBack(initialBackSeats);
+  sessionStorage.removeItem('booked_seats');
+
+};
 
   return (
-    <SeatContext.Provider value={{ left, right, center,back, toggleSeat, confirmBooking }}>
+    <SeatContext.Provider value={{ left, right, center, back, toggleSeat, confirmBooking, resetSelection }}>
       {children}
     </SeatContext.Provider>
   );

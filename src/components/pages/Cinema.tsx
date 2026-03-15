@@ -7,20 +7,17 @@ import { motion } from 'framer-motion';
 import { useSeats } from '../useContext';
 
 const Cinema = () => {
-   
+     const seatAnimation = {
+    hidden: { opacity: 0, scale: 0.5 },
+    visible: (i: number) => ({
+      opacity: 1,
+      scale: 1,
+      transition: { delay: i * 0.03 },
+    }),
+  };
   return (
    <main>
      <section className={scss.cinema}>
-      {/* Header */}
-      <header className={scss.header}>
-        <button title='назад' className={scss.backButton}>
-          <MoveLeft />
-        </button>
-        {/* <h1>Бронируйте место</h1> */}
-        <button className={scss.calendarButton}>
-          <CalendarDays />
-        </button>
-      </header>
       {/* Main Content */}
       <div className={scss.mobileWarning}>
     <p>Ваше устройство не поддерживается. Минимальная ширина экрана для бронирования — 382px.</p>
@@ -32,6 +29,9 @@ const Cinema = () => {
          
           <Seat />
           <motion.div 
+           variants={seatAnimation}
+            initial="hidden"
+            animate="visible"
   className={scss.sections}
   layout // Эң маанилүү проп ушул!
   transition={{ 

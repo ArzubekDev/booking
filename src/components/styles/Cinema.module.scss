@@ -10,40 +10,6 @@
   min-height: 100vh;
   background-color: #130a2b;
   
-  .header {
-    background-color: #130a2b;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: fit-content;
-    padding-block: 20px;
-    padding-inline: 10px;
-    h1 {
-      color: #eebbde;
-      font-size: clamp(1.875rem, 1.576rem + 1.23vw, 2.5rem);
-      font-weight: bold;
-    }
-    .backButton,
-    .calendarButton {
-      padding: clamp(0.313rem, 0.163rem + 0.62vw, 0.625rem) clamp(0.625rem, 0.326rem + 1.23vw, 1.25rem);
-      background-color: #c7058a;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 20px;
-      transition: background-color 0.3s ease;
-      &:hover {
-        background-color: #a0046e;
-      }
-    }
-    .calendarButton {
-      visibility: hidden;
-    }
-  }
   .mobileWarning {
     display: none;
     @media (max-width: 382px) {

@@ -1,16 +1,13 @@
 .booking {
-//   width: 440px;
-//   height: 220px;
   width: clamp(22.5rem, 20.111rem + 9.85vw, 27.5rem);
-  height: 170px;
-  padding: 22px;
+  height: clamp(10.625rem, 9.109rem + 6.19vw, 13.75rem);
+  padding: 20px;
   border-radius: 16px;
   background: rgba(15, 15, 25, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: white;
   display: flex;
   flex-direction: column;
-//   gap: 14px;
   gap: clamp(0.125rem, -0.233rem + 1.48vw, 0.875rem);
 
   .header {

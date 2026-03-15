@@ -1,111 +1,20 @@
 .container {
+    padding-top: 40px;
+
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 
-  .booking {
-    position: absolute;
-    left: -90;
-    width: 240px;
-    padding: 22px;
-    border-radius: 16px;
-    background: rgba(15, 15, 25, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-
-    .header {
-      font-size: 18px;
-      font-weight: 600;
-      color: #f9a8d4;
-    }
-
-    .content {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-
-      .item {
-        display: flex;
-        justify-content: space-between;
-        font-size: 15px;
-
-        .label {
-          color: #9ca3af;
-
-          .value {
-            font-weight: 600;
-          }
-        }
-      }
-    }
-
-    .line {
-      height: 1.4px;
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .total {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      span {
-        font-size: 14px;
-        color: #9ca3af;
-      }
-
-      strong {
-        font-size: 20px;
-        color: #facc15;
-      }
-    }
-
-    .book_button {
-      margin-top: 6px;
-      padding: 10px;
-      border: none;
-      border-radius: 10px;
-      background: #c7058a;
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.2s;
-
-      &:hover {
-        background: #a0046e;
-      }
-    }
-
-    .reset_button {
-      margin-top: 6px;
-      padding: 10px;
-      border: none;
-      border-radius: 10px;
-      background: #f4bde2;
-      color: rgb(52, 51, 51);
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.2s;
-
-      &:hover {
-        background: #adadad;
-      }
-    }
-  }
-
   .seats {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    width: 70%;
-    height: 300px;
+    justify-content: end;
+    width: clamp(24.375rem, 11.943rem + 50.74vw, 50rem);
+    height: clamp(10.625rem, 7.593rem + 12.38vw, 16.875rem);
     margin: 0 auto;
-    gap: 25px;
+    gap: clamp(0.625rem, 0.17rem + 1.86vw, 1.563rem);
 
     .front {
       display: flex;
@@ -119,8 +28,9 @@
         align-items: center;
         justify-content: center;
         flex-wrap: wrap-reverse;
+        gap: clamp(0.625rem, 0.17rem + 1.86vw, 1.563rem);
         width: 40%;
-        gap: 25px;
+        // gap: clamp(0.938rem, -0.013rem + 2.1vw, 1.563rem);
 
         .seatLeftItem,
         .seatRightItem {
@@ -188,7 +98,7 @@
     .center {
       display: flex;
       justify-content: center;
-      gap: 25px;
+      gap: clamp(0.938rem, -0.013rem + 2.1vw, 1.563rem);
       width: 100%;
 
       .seatCenterItem {
@@ -254,7 +164,7 @@
       display: grid;
       grid-template-columns: repeat(10, minmax(20px, 1fr));
       justify-content: center;
-      gap: 25px;
+      gap: clamp(0.938rem, -0.013rem + 2.1vw, 1.563rem);
       margin: 0 auto;
       padding: 20px;
 
@@ -321,22 +231,24 @@
 
   .numbers {
     position: absolute;
-    top: 5;
-    right: 120px;
+    top: 30;
+    right: 0;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: clamp(0.75rem, 0.239rem + 1.52vw, 1.375rem);
     padding: 10px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
-
+@media (max-width: 540px) {
+  display: none;
+}
     .numberItem {
       position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 30px;
-      height: 30px;
+      width: clamp(1.375rem, 0.614rem + 1.68vw, 1.875rem);
+      height: clamp(1.375rem, 0.614rem + 1.68vw, 1.875rem);
       font-size: 13px;
       font-weight: 600;
       color: #ffffff;
@@ -361,7 +273,7 @@
       }
 
       &:nth-child(2n) {
-        background-color: #f96fcb;
+        background-color: #9d3e7d;
       }
 
       &:nth-child(4) {
@@ -369,7 +281,7 @@
       }
 
       &.activeRow {
-        background-color: #facc15 !important; // Түсүн өзгөртүп койсоңуз болот
+        background-color: #facc15;
 
         span {
           visibility: visible;

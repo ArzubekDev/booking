@@ -1,19 +1,27 @@
 .seat {
-  width: 40px;
-  height: 22px;
+  // width: clamp(1.375rem, 0.829rem + 2.23vw, 2.5rem);
+  // height: clamp(0.875rem, 0.693rem + 0.74vw, 1.25rem);
+  width: clamp(1.375rem, 0.813rem + 2.25vw, 2.5rem);
+  height: clamp(0.938rem, 0.625rem + 1.25vw, 1.563rem);
+  // width: 40px;
+  // height: 25px;
   background-color: #fff;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: clamp(0.125rem, -0.057rem + 0.74vw, 0.5rem);
+  border-bottom-right-radius: clamp(0.125rem, -0.057rem + 0.74vw, 0.5rem);
   position: relative;
   .small {
-    width: 24px;
-    height: 24px;
+    width: clamp(0.875rem, 0.572rem + 1.24vw, 1.5rem);
+    height: clamp(0.875rem, 0.632rem + 0.99vw, 1.375rem);
+    // width: clamp(1.125rem, 0.555rem + 1.26vw, 1.5rem);
+    // height: clamp(1.125rem, 0.555rem + 1.26vw, 1.5rem);
     background-color: #fff;
     position: absolute;
-    top: -8px;
-    left: 8px;
-    border: 2px solid #000;
-    border-radius: 5px;
+    top: clamp(-0.25rem, -0.129rem + -0.5vw, -0.5rem);
+    left: clamp(0.25rem, 0.129rem + 0.5vw, 0.5rem);
+    // top: -8px;
+    // left: 8px;
+    border: clamp(0.063rem, 0.032rem + 0.12vw, 0.125rem) solid #000;
+    border-radius: clamp(0.125rem, 0.034rem + 0.37vw, 0.313rem);
   }
   .free {
     background-color: #fff;

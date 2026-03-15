@@ -17,43 +17,7 @@ const Seat = () => {
 
   return (
     <div className={scss.container}>
-      <div className={scss.booking}>
-        <div className={scss.header}>
-          <span>Бронь</span>
-        </div>
-
-        <div className={scss.content}>
-          <div className={scss.item}>
-            <span className={scss.label}>Ряд</span>
-            <span className={scss.value}>{rows || '-'}</span>
-          </div>
-
-          <div className={scss.item}>
-            <span className={scss.label}>Место</span>
-            <span className={scss.value}>{seatNumbers || '-'}</span>
-          </div>
-
-          <div className={scss.item}>
-            <span className={scss.label}>Количество</span>
-            <span className={scss.value}>{totalCount}</span>
-          </div>
-        </div>
-
-        <div className={scss.line}></div>
-
-        <div className={scss.total}>
-          <span>Общая сумма</span>
-          <strong>{totalAmount} сом</strong>
-        </div>
-
-        <button className={scss.book_button} disabled={totalCount === 0} onClick={confirmBooking}>
-          Забронировать
-        </button>
-
-        <button className={scss.reset_button} onClick={resetSelection}>
-          Сбросить выбор
-        </button>
-      </div>
+    
       <div className={scss.seats}>
         <div className={scss.front}>
           <div className={scss.left}>

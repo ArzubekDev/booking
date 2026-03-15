@@ -21,12 +21,12 @@ const Booking = () => {
       <div className={scss.content}>
         <div className={scss.item}>
           <span className={scss.label}>Ряд</span>
-          <span className={scss.value}>{rows || '-'}</span>
+          <span className={scss.value}>{rows.length > 7 ? rows.substring(0, 7) + '...' : rows || '-'}</span>
         </div>
 
         <div className={scss.item}>
           <span className={scss.label}>Место</span>
-          <span className={scss.value}>{seatNumbers.length > 14 ? seatNumbers.substring(0, 14) + '...' : seatNumbers || '-'}</span>
+          <span className={scss.value}>{seatNumbers.length > 10 ? seatNumbers.substring(0, 10) + '...' : seatNumbers || '-'}</span>
         </div>
 
         <div className={scss.item}>

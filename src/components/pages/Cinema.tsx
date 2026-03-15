@@ -3,6 +3,7 @@ import { CalendarDays, MoveLeft } from 'lucide-react';
 import scss from '../styles/Cinema.module.scss';
 import Seat from '../ui/Seat';
 import Booking from '../ui/Booking';
+import { motion } from 'framer-motion';
 import { useSeats } from '../useContext';
 
 const Cinema = () => {
@@ -30,17 +31,25 @@ const Cinema = () => {
           <div className={scss.screen} title='TV' />
          
           <Seat />
-          <div className={scss.sections}>
-            <p>
-              <span className={scss.free} /> свободный
-            </p>
-            <p>
-              <span className={scss.taken} /> занято
-            </p>
-            <p>
-              <span className={scss.selected} /> выбрано
-            </p>
-          </div>
+          <motion.div 
+  className={scss.sections}
+  layout // Эң маанилүү проп ушул!
+  transition={{ 
+    type: "spring", // Пружина эффекти (табигыйраак)
+    stiffness: 300, 
+    damping: 30 // Катуулугу жана басаңдашы
+  }}
+>
+  <motion.p layout>
+    <span className={scss.free} /> свободный
+  </motion.p>
+  <motion.p layout>
+    <span className={scss.taken} /> занято
+  </motion.p>
+  <motion.p layout>
+    <span className={scss.selected} /> выбрано
+  </motion.p>
+</motion.div>
           <Booking />
         </div>
       </div>

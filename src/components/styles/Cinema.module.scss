@@ -1,6 +1,6 @@
 .cinema {
   overflow: hidden;
-  padding-top: clamp(0rem, -0.91rem + 3.71vw, 1.875rem);
+  padding-top: clamp(0rem, -2.123rem + 8.66vw, 4.375rem);
   padding-bottom: clamp(0rem, -0.91rem + 3.71vw, 1.875rem);
   display: flex;
   align-items: center;
@@ -61,6 +61,7 @@
       display: none;
     }
     .main {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -100,38 +101,49 @@
         }
       }
 
-      .sections {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: clamp(1.875rem, 1.273rem + 2.47vw, 3.125rem);
+.sections {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 0.5rem + 2vw, 2rem);
+  margin-top: 20px;
+  @media (min-width: 800px) {
+    position: absolute;
+    left: -100px; 
+    top: 25%;
+    transform: translateY(-50%); 
+    flex-direction: column;
+    align-items: start;
+    margin-top: 0;
+  }
 
-        p {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          color: white;
-          font-size: clamp(0.875rem, 0.785rem + 0.37vw, 1.063rem);
-          .free {
-            width: clamp(0.625rem, 0.324rem + 1.23vw, 1.25rem);
-            height: clamp(0.625rem, 0.324rem + 1.23vw, 1.25rem);
-            background-color: #fff;
-            border-radius: 50%;
-          }
-          .taken {
-            width: clamp(0.625rem, 0.324rem + 1.23vw, 1.25rem);
-            height: clamp(0.625rem, 0.324rem + 1.23vw, 1.25rem);
-            background-color: #c7058a;
-            border-radius: 50%;
-          }
-          .selected {
-            width: clamp(0.625rem, 0.324rem + 1.23vw, 1.25rem);
-            height: clamp(0.625rem, 0.324rem + 1.23vw, 1.25rem);
-            background-color: rgb(7, 154, 142);
-            border-radius: 50%;
-          }
-        }
-      }
+  // Абдан кичинекей экрандарда (мисалы, 450px) тизилип калбашы үчүн
+  @media (max-width: 450px) {
+    flex-wrap: wrap; // Эгер батпай калса, астына түшөт
+    justify-content: center;
+  }
+
+  p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-size: clamp(0.875rem, 0.785rem + 0.37vw, 1.063rem);
+    white-space: nowrap; // Тексттин экиге бөлүнүп кетпеши үчүн
+
+    // Айланалардын (dots) жалпы стили
+    span {
+      width: clamp(0.75rem, 0.5rem + 1vw, 1rem);
+      height: clamp(0.75rem, 0.5rem + 1vw, 1rem);
+      border-radius: 50%;
+      flex-shrink: 0; // Айлананын кысылып кетпеши үчүн
+    }
+
+    .free { background-color: #fff; }
+    .taken { background-color: #c7058a; }
+    .selected { background-color: rgb(7, 154, 142); }
+  }
+}
     }
   }
 }

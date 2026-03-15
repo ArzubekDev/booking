@@ -258,14 +258,14 @@
 @media (max-width: 800px) {
  position: fixed;
  right: 0;
- top: 18%;
+ top: 100px;
 }
 @media (max-width: 544px) {
 padding: 0;
 background-color: transparent;
 border: none;
-top: 21%;
-gap: 10px;
+top: clamp(8.125rem, 12.109rem + -11.72vw, 6.25rem);
+gap: 7px;
 }
 @media (max-width: 415px) or (max-height: 585px) {
   display: none;

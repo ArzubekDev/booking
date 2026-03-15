@@ -12,7 +12,7 @@ const Cinema = () => {
      <section className={scss.cinema}>
       {/* Header */}
       <header className={scss.header}>
-        <button className={scss.backButton}>
+        <button title='назад' className={scss.backButton}>
           <MoveLeft />
         </button>
         {/* <h1>Бронируйте место</h1> */}
@@ -27,7 +27,7 @@ const Cinema = () => {
 
       <div className={scss.container}>
         <div className={scss.main}>
-          <div className={scss.screen} />
+          <div className={scss.screen} title='TV' />
          
           <Seat />
           <div className={scss.sections}>

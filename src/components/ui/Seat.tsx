@@ -22,7 +22,7 @@ const Seat = () => {
           <div className={scss.left}>
             {left.map((seat) => (
               <button
-                className={scss.seatLeftItem}
+                className={`${scss.seatLeftItem} ${seat.status === 'занято' ? scss.disabled : ''}`}
                 key={seat.id}
                 disabled={seat.status === 'занято'}
                 onClick={() => toggleSeat(seat.id)}
@@ -30,17 +30,21 @@ const Seat = () => {
                 onMouseLeave={() => setActiveRow(null)}
               >
                 <SeatLogo status={seat.status} />
-                <p className={scss.info}>
+                {
+                  seat.status !== 'занято' ? (
+                    <p className={scss.info}>
                   ряд: <span>{seat.row}</span>; номер: <span>{seat.number}</span> цена:{' '}
                   <span>{seat.price}</span>
                 </p>
+                  ) : <p className={scss.info}>занято</p>
+                }
               </button>
             ))}
           </div>
           <div className={scss.right}>
             {right.map((seat) => (
               <button
-                className={scss.seatRightItem}
+                className={`${scss.seatRightItem} ${seat.status === 'занято' ? scss.disabled : ''}`}
                 key={seat.id}
                 disabled={seat.status === 'занято'}
                 onClick={() => toggleSeat(seat.id)}
@@ -48,10 +52,14 @@ const Seat = () => {
                 onMouseLeave={() => setActiveRow(null)}
               >
                 <SeatLogo status={seat.status} />
-                <p className={scss.info}>
+                 {
+                  seat.status !== 'занято' ? (
+                    <p className={scss.info}>
                   ряд: <span>{seat.row}</span>; номер: <span>{seat.number}</span> цена:{' '}
                   <span>{seat.price}</span>
                 </p>
+                  ) : <p className={scss.info}>занято</p>
+                }
               </button>
             ))}
           </div>
@@ -59,7 +67,7 @@ const Seat = () => {
         <div className={scss.center}>
           {center.map((seat) => (
             <button
-              className={scss.seatCenterItem}
+              className={`${scss.seatCenterItem} ${seat.status === 'занято' ? scss.disabled : ''} `}
               key={seat.id}
               disabled={seat.status === 'занято'}
               onClick={() => toggleSeat(seat.id)}
@@ -67,17 +75,21 @@ const Seat = () => {
               onMouseLeave={() => setActiveRow(null)}
             >
               <SeatLogo status={seat.status} />
-              <p className={scss.info}>
-                ряд: <span>{seat.row}</span>; номер: <span>{seat.number}</span> цена:{' '}
-                <span>{seat.price}</span>
-              </p>
+               {
+                  seat.status !== 'занято' ? (
+                    <p className={scss.info}>
+                  ряд: <span>{seat.row}</span>; номер: <span>{seat.number}</span> цена:{' '}
+                  <span>{seat.price}</span>
+                </p>
+                  ) : <p className={scss.info}>занято</p>
+                }
             </button>
           ))}
         </div>
         <div className={scss.back}>
           {back.map((seat) => (
             <button
-              className={scss.seatBackItem}
+              className={`${scss.seatBackItem} ${seat.status === 'занято' ? scss.disabled : ''} `}
               key={seat.id}
               disabled={seat.status === 'занято'}
               onClick={() => toggleSeat(seat.id)}
@@ -85,10 +97,14 @@ const Seat = () => {
               onMouseLeave={() => setActiveRow(null)}
             >
               <SeatLogo status={seat.status} />
-              <p className={scss.info}>
-                ряд: <span>{seat.row}</span>; номер: <span>{seat.number}</span> цена:{' '}
-                <span>{seat.price}</span>
-              </p>
+               {
+                  seat.status !== 'занято' ? (
+                    <p className={scss.info}>
+                  ряд: <span>{seat.row}</span>; номер: <span>{seat.number}</span> цена:{' '}
+                  <span>{seat.price}</span>
+                </p>
+                  ) : <p className={scss.info}>занято</p>
+                }
             </button>
           ))}
         </div>

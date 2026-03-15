@@ -107,6 +107,14 @@ export const SeatProvider = ({ children }: { children: ReactNode }) => {
     setCenter(initialCenterSeats);
     setBack(initialBackSeats);
     sessionStorage.removeItem('booked_seats');
+    
+    setTimeout(() => {
+      toast.warning("Выбранные места сброшены.", {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "dark",
+      });
+    }, 100);
   };
 
   return (

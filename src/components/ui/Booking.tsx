@@ -51,9 +51,13 @@ const Booking = () => {
           {isLoading ? 'Забронировать...' : 'Забронировать'}
         </button>
 
-        <button className={scss.reset_button} onClick={resetSelection}>
-          Сбросить выбор
-        </button>
+       <button 
+  className={scss.reset_button} 
+  onClick={resetSelection} 
+  disabled={!allSeats.some((seat) => seat.status === 'занято')}
+>
+  Сбросить выбор
+</button>
       </div>
     </div>
   );

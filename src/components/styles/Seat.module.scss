@@ -1,6 +1,6 @@
 .container {
   padding-top: 40px;
-width: 100%;
+  width: 100%;
   max-width: 100vw;
   display: flex;
   align-items: center;
@@ -36,7 +36,6 @@ width: 100%;
         flex-wrap: wrap-reverse;
         gap: clamp(0.625rem, 0.17rem + 1.86vw, 1.563rem);
         width: 40%;
-        // gap: clamp(0.938rem, -0.013rem + 2.1vw, 1.563rem);
 
         .seatLeftItem,
         .seatRightItem {
@@ -96,6 +95,10 @@ width: 100%;
             opacity: 1;
             transform: translateX(-50%) translateY(0);
           }
+        }
+        .disabled {
+          background-color: #c7058a;
+          cursor: not-allowed;
         }
       }
     }
@@ -163,8 +166,11 @@ width: 100%;
           transform: translateX(-50%) translateY(0);
         }
       }
+      .disabled {
+        background-color: #c7058a;
+        cursor: not-allowed;
+      }
     }
-
     .back {
       display: grid;
       grid-template-columns: repeat(10, minmax(20px, 1fr));
@@ -230,6 +236,10 @@ width: 100%;
           transform: translateX(-50%) translateY(0);
         }
       }
+      .disabled {
+        background-color: #c7058a;
+        cursor: not-allowed;  
+         }
     }
   }
 

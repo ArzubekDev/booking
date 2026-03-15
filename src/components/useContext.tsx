@@ -4,6 +4,8 @@ import initialLeftSeats from '../seatfrontleft.json';
 import initialRightSeats from '../seatfrontright.json';
 import initialCenterSeats from '../seatscenter.json';
 import initialBackSeats from '../seatback.json';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export type SeatType = {
   id: number;
@@ -75,6 +77,8 @@ export const SeatProvider = ({ children }: { children: ReactNode }) => {
   const confirmBooking = async () => {
     setIsLoading(true);
 
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     const markAsBusy = (prev: SeatType[]) =>
       prev.map((seat) => (seat.status === 'выбрано' ? { ...seat, status: 'занято' } : seat));
 
@@ -88,9 +92,12 @@ export const SeatProvider = ({ children }: { children: ReactNode }) => {
     setCenter(newCenter);
     setBack(newBack);
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
     saveToStorage(newLeft, newRight, newCenter, newBack);
+    toast.success("Места успешно забронированы!", {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "dark",
+    });
     setIsLoading(false);
   };
 
@@ -107,6 +114,7 @@ export const SeatProvider = ({ children }: { children: ReactNode }) => {
       value={{ left, right, center, back, toggleSeat, confirmBooking, resetSelection, isLoading }}
     >
       {children}
+      <ToastContainer />
     </SeatContext.Provider>
   );
 };

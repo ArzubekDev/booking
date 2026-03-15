@@ -12,13 +12,13 @@ const Seat = () => {
   const allBooked = allSeats.every((seat) => seat.status === 'занято');
 
   const seatAnimation = {
-  hidden: { opacity: 0, scale: 0.5 },
-  visible: (i: number) => ({
-    opacity: 1,
-    scale: 1,
-    transition: { delay: i * 0.03 }
-  })
-};
+    hidden: { opacity: 0, scale: 0.5 },
+    visible: (i: number) => ({
+      opacity: 1,
+      scale: 1,
+      transition: { delay: i * 0.03 },
+    }),
+  };
 
   return (
     <div className={scss.container}>
@@ -30,11 +30,14 @@ const Seat = () => {
           <div className={scss.left}>
             {left.map((seat, index) => (
               <motion.button
+                layout
+                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.1 }}
                 key={seat.id}
-               variants={seatAnimation}
-               initial="hidden"
-               animate="visible"
-               custom={index}
+                variants={seatAnimation}
+                initial="hidden"
+                animate="visible"
+                custom={index}
                 className={`${scss.seatLeftItem} ${seat.status === 'занято' ? scss.disabled : ''}`}
                 disabled={seat.status === 'занято'}
                 onClick={() => toggleSeat(seat.id)}
@@ -57,10 +60,13 @@ const Seat = () => {
           <div className={scss.right}>
             {right.map((seat, index) => (
               <motion.button
-               variants={seatAnimation}
-               initial="hidden"
-               animate="visible"
-               custom={index}
+                layout
+                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.1 }}
+                variants={seatAnimation}
+                initial="hidden"
+                animate="visible"
+                custom={index}
                 className={`${scss.seatRightItem} ${seat.status === 'занято' ? scss.disabled : ''}`}
                 key={seat.id}
                 disabled={seat.status === 'занято'}
@@ -84,10 +90,13 @@ const Seat = () => {
         <div className={scss.center}>
           {center.map((seat, index) => (
             <motion.button
-             variants={seatAnimation}
-               initial="hidden"
-               animate="visible"
-               custom={index}
+              layout
+              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.1 }}
+              variants={seatAnimation}
+              initial="hidden"
+              animate="visible"
+              custom={index}
               className={`${scss.seatCenterItem} ${seat.status === 'занято' ? scss.disabled : ''} `}
               key={seat.id}
               disabled={seat.status === 'занято'}
@@ -110,10 +119,13 @@ const Seat = () => {
         <div className={scss.back}>
           {back.map((seat, index) => (
             <motion.button
-             variants={seatAnimation}
-               initial="hidden"
-               animate="visible"
-               custom={index}
+              layout
+              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.1 }}
+              variants={seatAnimation}
+              initial="hidden"
+              animate="visible"
+              custom={index}
               className={`${scss.seatBackItem} ${seat.status === 'занято' ? scss.disabled : ''} `}
               key={seat.id}
               disabled={seat.status === 'занято'}
@@ -137,11 +149,10 @@ const Seat = () => {
       <div className={scss.numbers}>
         {[1, 2, 3, 4, 5].map((num, index) => (
           <motion.div
-           variants={seatAnimation}
-               initial="hidden"
-               animate="visible"
-               custom={index}
-               
+            variants={seatAnimation}
+            initial="hidden"
+            animate="visible"
+            custom={index}
             key={num}
             className={`${scss.numberItem} ${activeRow === num ? scss.activeRow : ''}`}
           >

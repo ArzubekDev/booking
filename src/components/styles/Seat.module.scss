@@ -46,7 +46,8 @@
           cursor: pointer;
           transition: transform 0.2s ease;
 
-          &:hover {
+      
+            &:hover {
             transform: scale(1.05);
             z-index: 10;
 
@@ -54,6 +55,7 @@
               visibility: visible;
             }
           }
+        
 
           .info {
             position: absolute;
@@ -90,11 +92,13 @@
             }
           }
 
-          &:hover .info {
-            visibility: visible;
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-          }
+       @media (min-width: 472px) {
+         &:hover .info {
+          visibility: visible;
+          opacity: 1;
+          transform: translateX(-50%) translateY(0);
+        }
+       }
         }
         .disabled {
           cursor: not-allowed;
@@ -160,11 +164,13 @@
           }
         }
 
-        &:hover .info {
+       @media (min-width: 472px) {
+         &:hover .info {
           visibility: visible;
           opacity: 1;
           transform: translateX(-50%) translateY(0);
         }
+       }
       }
       .disabled {
         cursor: not-allowed;
@@ -230,11 +236,13 @@
           }
         }
 
-        &:hover .info {
+       @media (min-width: 472px) {
+         &:hover .info {
           visibility: visible;
           opacity: 1;
           transform: translateX(-50%) translateY(0);
         }
+       }
       }
       .disabled {
         cursor: not-allowed;

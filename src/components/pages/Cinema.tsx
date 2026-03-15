@@ -1,9 +1,12 @@
+"use client";
 import { CalendarDays, MoveLeft } from 'lucide-react';
 import scss from '../styles/Cinema.module.scss';
 import Seat from '../ui/Seat';
 import Booking from '../ui/Booking';
+import { useSeats } from '../useContext';
 
 const Cinema = () => {
+   
   return (
    <main>
      <section className={scss.cinema}>
@@ -18,9 +21,14 @@ const Cinema = () => {
         </button>
       </header>
       {/* Main Content */}
+      <div className={scss.mobileWarning}>
+    <p>Ваше устройство не поддерживается. Минимальная ширина экрана для бронирования — 382px.</p>
+  </div>
+
       <div className={scss.container}>
         <div className={scss.main}>
           <div className={scss.screen} />
+         
           <Seat />
           <div className={scss.sections}>
             <p>

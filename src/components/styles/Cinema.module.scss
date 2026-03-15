@@ -1,6 +1,7 @@
 .cinema {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  overflow: hidden;
+  padding-top: clamp(0rem, -0.91rem + 3.71vw, 1.875rem);
+  padding-bottom: clamp(0rem, -0.91rem + 3.71vw, 1.875rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,9 +43,22 @@
       visibility: hidden;
     }
   }
+  .mobileWarning {
+    display: none;
+    @media (max-width: 382px) {
+      display: block;
+      color: #eebbde;
+      font-size: clamp(1.375rem, 0.813rem + 2.25vw, 2.5rem);
+      text-align: center;
+      margin-top: 20px;
+    }
+  }
   .container {
     display: flex;
     align-items: start;
+    @media (max-width: 382px) {
+      display: none;
+    }
     .main {
       display: flex;
       align-items: center;

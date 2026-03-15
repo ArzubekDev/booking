@@ -26,7 +26,7 @@ const Booking = () => {
 
         <div className={scss.item}>
           <span className={scss.label}>Место</span>
-          <span className={scss.value}>{seatNumbers || '-'}</span>
+          <span className={scss.value}>{seatNumbers.length > 14 ? seatNumbers.substring(0, 14) + '...' : seatNumbers || '-'}</span>
         </div>
 
         <div className={scss.item}>

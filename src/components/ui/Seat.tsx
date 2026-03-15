@@ -7,12 +7,17 @@ import SeatLogo from './SeatLogo';
 const Seat = () => {
   const { left, right, center, back, toggleSeat, } = useSeats();
   const [activeRow, setActiveRow] = useState<number | null>(null);
+   const allSeats = [...left, ...right, ...center, ...back];
+   const allBooked = allSeats.every(seat => seat.status === 'занято');
 
 
   return (
     <div className={scss.container}>
     
       <div className={scss.seats}>
+         {
+            allBooked && <p className={scss.message}>Все места заняты. Пожалуйста, выберите другой сеанс.</p>
+          }
         <div className={scss.front}>
           <div className={scss.left}>
             {left.map((seat) => (

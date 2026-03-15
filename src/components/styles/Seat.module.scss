@@ -1,6 +1,7 @@
 .container {
-    padding-top: 40px;
-
+  padding-top: 40px;
+width: 100%;
+  max-width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,6 +16,11 @@
     height: clamp(10.625rem, 7.593rem + 12.38vw, 16.875rem);
     margin: 0 auto;
     gap: clamp(0.625rem, 0.17rem + 1.86vw, 1.563rem);
+
+    .message {
+      font-size: clamp(0.813rem, 0.6rem + 0.87vw, 1.25rem);
+      color: #eebbde;
+    }
 
     .front {
       display: flex;
@@ -92,7 +98,6 @@
           }
         }
       }
-
     }
 
     .center {
@@ -166,7 +171,7 @@
       justify-content: center;
       gap: clamp(0.938rem, -0.013rem + 2.1vw, 1.563rem);
       margin: 0 auto;
-      padding: 20px;
+      padding: 20px 3px;
 
       .seatBackItem {
         display: flex;
@@ -226,7 +231,6 @@
         }
       }
     }
-
   }
 
   .numbers {
@@ -239,9 +243,9 @@
     padding: 10px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
-@media (max-width: 540px) {
-  display: none;
-}
+    @media (max-width: 540px) {
+      display: none;
+    }
     .numberItem {
       position: relative;
       display: flex;
@@ -289,7 +293,6 @@
           transform: translateX(0);
         }
       }
-
     }
   }
 }

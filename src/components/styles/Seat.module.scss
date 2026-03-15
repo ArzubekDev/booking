@@ -97,7 +97,6 @@
           }
         }
         .disabled {
-          background-color: #c7058a;
           cursor: not-allowed;
         }
       }
@@ -110,6 +109,7 @@
       width: 100%;
 
       .seatCenterItem {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -167,7 +167,6 @@
         }
       }
       .disabled {
-        background-color: #c7058a;
         cursor: not-allowed;
       }
     }
@@ -180,6 +179,7 @@
       padding: 20px 3px;
 
       .seatBackItem {
+      position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -237,7 +237,6 @@
         }
       }
       .disabled {
-        background-color: #c7058a;
         cursor: not-allowed;  
          }
     }

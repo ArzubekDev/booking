@@ -1,9 +1,9 @@
-"use client";
+'use client';
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
-import initialLeftSeats from "../seatfrontleft.json";
-import initialRightSeats from "../seatfrontright.json";
-import initialCenterSeats from "../seatscenter.json"
-import initialBackSeats from "../seatback.json"
+import initialLeftSeats from '../seatfrontleft.json';
+import initialRightSeats from '../seatfrontright.json';
+import initialCenterSeats from '../seatscenter.json';
+import initialBackSeats from '../seatback.json';
 
 export type SeatType = {
   id: number;
@@ -18,6 +18,7 @@ interface SeatContextType {
   right: SeatType[];
   center: SeatType[];
   back: SeatType[];
+  isLoading: boolean;
   toggleSeat: (id: number) => void;
   confirmBooking: () => void;
   resetSelection: () => void;
@@ -30,6 +31,7 @@ export const SeatProvider = ({ children }: { children: ReactNode }) => {
   const [right, setRight] = useState<SeatType[]>(initialRightSeats);
   const [center, setCenter] = useState<SeatType[]>(initialCenterSeats);
   const [back, setBack] = useState<SeatType[]>(initialBackSeats);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const saved = sessionStorage.getItem('booked_seats');
@@ -43,33 +45,39 @@ export const SeatProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const saveToStorage = (l: SeatType[], r: SeatType[], c: SeatType[], b: SeatType[]) => {
-    sessionStorage.setItem('booked_seats', JSON.stringify({
-      leftS: l,
-      rightS: r,
-      centerS: c,
-      backS: b
-    }));
-  };
-
-const toggleSeat = (id: number) => {
-    const update = (prev: SeatType[]) => prev.map((seat) => {
-      if (seat.id === id) {
-        if (seat.status === "свободно") return { ...seat, status: "выбрано" };
-        if (seat.status === "выбрано") return { ...seat, status: "свободно" };
-      }
-      return seat;
-    });
-
-    setLeft(prev => update(prev));
-    setRight(prev => update(prev));
-    setCenter(prev => update(prev));
-    setBack(prev => update(prev));
-  };
-
-const confirmBooking = () => {
-    const markAsBusy = (prev: SeatType[]) => prev.map((seat) => 
-      seat.status === "выбрано" ? { ...seat, status: "занято" } : seat
+    sessionStorage.setItem(
+      'booked_seats',
+      JSON.stringify({
+        leftS: l,
+        rightS: r,
+        centerS: c,
+        backS: b,
+      }),
     );
+  };
+
+  const toggleSeat = (id: number) => {
+    const update = (prev: SeatType[]) =>
+      prev.map((seat) => {
+        if (seat.id === id) {
+          if (seat.status === 'свободно') return { ...seat, status: 'выбрано' };
+          if (seat.status === 'выбрано') return { ...seat, status: 'свободно' };
+        }
+        return seat;
+      });
+
+    setLeft((prev) => update(prev));
+    setRight((prev) => update(prev));
+    setCenter((prev) => update(prev));
+    setBack((prev) => update(prev));
+  };
+
+  const confirmBooking = async () => {
+    setIsLoading(true);
+
+    const markAsBusy = (prev: SeatType[]) =>
+      prev.map((seat) => (seat.status === 'выбрано' ? { ...seat, status: 'занято' } : seat));
+
     const newLeft = markAsBusy(left);
     const newRight = markAsBusy(right);
     const newCenter = markAsBusy(center);
@@ -80,20 +88,24 @@ const confirmBooking = () => {
     setCenter(newCenter);
     setBack(newBack);
 
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
     saveToStorage(newLeft, newRight, newCenter, newBack);
+    setIsLoading(false);
   };
 
-const resetSelection = () => {
-  setLeft(initialLeftSeats);
-  setRight(initialRightSeats);
-  setCenter(initialCenterSeats);
-  setBack(initialBackSeats);
-  sessionStorage.removeItem('booked_seats');
-
-};
+  const resetSelection = () => {
+    setLeft(initialLeftSeats);
+    setRight(initialRightSeats);
+    setCenter(initialCenterSeats);
+    setBack(initialBackSeats);
+    sessionStorage.removeItem('booked_seats');
+  };
 
   return (
-    <SeatContext.Provider value={{ left, right, center, back, toggleSeat, confirmBooking, resetSelection }}>
+    <SeatContext.Provider
+      value={{ left, right, center, back, toggleSeat, confirmBooking, resetSelection, isLoading }}
+    >
       {children}
     </SeatContext.Provider>
   );
@@ -101,6 +113,6 @@ const resetSelection = () => {
 
 export const useSeats = () => {
   const context = useContext(SeatContext);
-  if (!context) throw new Error("Error");
+  if (!context) throw new Error('Error');
   return context;
 };

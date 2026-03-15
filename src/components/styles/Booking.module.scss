@@ -80,6 +80,11 @@
         background: #a0046e;
       }
     }
+    .loading {
+      background: #adadad;
+      cursor: not-allowed;
+      color: #d8dfeb;
+    }
 
     .reset_button {
       height: 40px;

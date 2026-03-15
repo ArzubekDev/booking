@@ -5,15 +5,9 @@ import { useSeats } from '../useContext';
 import SeatLogo from './SeatLogo';
 
 const Seat = () => {
-  const { left, right, center, back, toggleSeat, confirmBooking, resetSelection } = useSeats();
-
+  const { left, right, center, back, toggleSeat, } = useSeats();
   const [activeRow, setActiveRow] = useState<number | null>(null);
-  const allSeats = [...left, ...right, ...center, ...back];
-  const selectedSeats = allSeats.filter((seat) => seat.status === 'выбрано');
-  const totalAmount = selectedSeats.reduce((sum, seat) => sum + seat.price, 0);
-  const totalCount = selectedSeats.length;
-  const rows = Array.from(new Set(selectedSeats.map((s) => s.row))).join(', ');
-  const seatNumbers = selectedSeats.map((s) => s.number).join(', ');
+
 
   return (
     <div className={scss.container}>
